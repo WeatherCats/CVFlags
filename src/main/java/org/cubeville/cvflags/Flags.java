@@ -11,6 +11,4 @@ public final class Flags {
         public final static StringFlag PLAYER_CHECK = new StringFlag("pcheck");
         public final static StateFlag EXPLOSION_DAMAGE = new StateFlag("explosion-damage", true);
         public final static StateFlag ABNORMAL_ENTITY_RIDE = new StateFlag("abnormal-entity-ride", false);
-        public final static StateFlag SPAWN_EGGS = new StateFlag("spawn-eggs", false);
-        public final static StateFlag NATURAL_SPAWNING = new StateFlag("natural-spawning", true);
 }
