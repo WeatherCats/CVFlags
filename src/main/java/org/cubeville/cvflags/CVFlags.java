@@ -8,8 +8,10 @@ import com.sk89q.worldguard.protection.flags.Flag;
 import com.sk89q.worldguard.protection.flags.StateFlag;
 import com.sk89q.worldguard.protection.flags.registry.FlagConflictException;
 import com.sk89q.worldguard.protection.flags.registry.FlagRegistry;
+import com.sk89q.worldguard.protection.managers.RegionManager;
 import com.sk89q.worldguard.protection.regions.RegionContainer;
 import com.sk89q.worldguard.protection.regions.RegionQuery;
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
@@ -30,6 +32,13 @@ public final class CVFlags extends JavaPlugin implements Listener {
                 RegionQuery query = getRegionQuery();
                 LocalPlayer localPlayer = WorldGuardPlugin.inst().wrapPlayer(player);
                 return query.testState(BukkitAdapter.adapt(location), localPlayer, flag);
+        }
+
+        public static boolean isFlagTrue(StateFlag flag, Location location) {
+                RegionContainer container = WorldGuard.getInstance().getPlatform().getRegionContainer();
+                RegionManager regions = container.get(BukkitAdapter.adapt(location.getWorld()));
+                ApplicableRegionSet set = regions.getApplicableRegions(BukkitAdapter.adapt(location).toVector().toBlockPoint());
+                return set.testState(null, flag);
         }
 
         public static Object getFlagValue(Flag flag, Player player) {
@@ -76,6 +85,8 @@ public final class CVFlags extends JavaPlugin implements Listener {
                 getServer().getPluginManager().registerEvents(new EnderChestFlag(), this);
                 getServer().getPluginManager().registerEvents(new LocalDeathMessageFlag(), this);
                 getServer().getPluginManager().registerEvents(new ExplosionDamageFlag(), this);
+                getServer().getPluginManager().registerEvents(new SpawnEggsFlag(), this);
+                getServer().getPluginManager().registerEvents(new NaturalSpawningFlag(), this);
         }
 
         public static CVFlags getInstance() {
