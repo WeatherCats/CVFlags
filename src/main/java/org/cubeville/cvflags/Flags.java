@@ -13,4 +13,6 @@ public final class Flags {
         public final static StateFlag ABNORMAL_ENTITY_RIDE = new StateFlag("abnormal-entity-ride", false);
         public final static StateFlag SPAWN_EGGS = new StateFlag("spawn-eggs", false);
         public final static StateFlag NATURAL_SPAWNING = new StateFlag("natural-spawning", true);
+        public final static StateFlag ICE_LIQUIFY = new StateFlag("ice-liquify", true);
+//        public final static StateFlag HARVEST_HIVE = new StateFlag("harvest-hive", false);
 }

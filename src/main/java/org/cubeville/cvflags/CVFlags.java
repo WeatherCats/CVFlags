@@ -11,7 +11,6 @@ import com.sk89q.worldguard.protection.flags.registry.FlagRegistry;
 import com.sk89q.worldguard.protection.managers.RegionManager;
 import com.sk89q.worldguard.protection.regions.RegionContainer;
 import com.sk89q.worldguard.protection.regions.RegionQuery;
-import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
@@ -88,6 +87,8 @@ public final class CVFlags extends JavaPlugin implements Listener {
                 getServer().getPluginManager().registerEvents(new AbnormalEntityRideFlag(), this);
                 getServer().getPluginManager().registerEvents(new SpawnEggsFlag(), this);
                 getServer().getPluginManager().registerEvents(new NaturalSpawningFlag(), this);
+                getServer().getPluginManager().registerEvents(new IceLiquifyFlag(), this);
+//                getServer().getPluginManager().registerEvents(new HarvestHiveFlag(), this);
         }
 
         public static CVFlags getInstance() {
